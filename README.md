@@ -1,32 +1,80 @@
-# Kitten: A mini cat command 🐱
+# Kitten: A mini cat command 🐱 #
 
-In this repo, we will ll build a command line tool using Rust.
+In this repo, we will use Rust to build a mini version of the command line tool cat.
+
+## Clone ##
+
+Please **do not download** the repo as a zipped file.
+We will be updating its content as time goes on.
+
+If you are using University computers, note that git and GitHub Desktop are both available via AppsAnywhere.
+
+If you are using Replit, note that you can import a GitHub repository into an empty Repl.
+
+Otherwise, on your own computers, feel free to install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), the [GitHub client](https://github.com/cli/cli) or the [GitHub Desktop](https://desktop.github.com) app.
+
+1. use `git` to clone it:
+
+    ````shell
+    git clone https://github.com/manighahrmani/kitten.git
+    ````
+
+2. use the GitHub CLI tool:
+    ```shell
+    gh repo clone manighahrmani/kitten
+    ````
+
+3. click the Code button and select Open with GitHub Desktop.
+
+## Select the branch ##
+
 As we go through every worksheet, a corresponding branch will be added here.
-The branch will contain the source could you should have once you have finished the worksheet.
-Note that the repo will only contain the source code (not the compiled executable).
-You should thus build and execute the code using Cargo.
-We recommend you install Cargo using [Rustup](https://rustup.rs#). 
-Then from your terminal run the following to compile the package:
 
-```bash
-cargo build 
+The branch for the first worksheet is `worksheet-0` and is the default branch.
+To access the code for any other branch, you must switch your current branch.
+
+Follow the instructions below to switch your branch to worksheet-x (where x is a number):
+
+1. use `git` to checkout a branch:
+
+    ```shell
+    git checkout worksheet-x
+    ```
+
+    and to view all available branches:
+
+    ```shell
+    git branch -v
+    ```
+
+2. follow this [instruction on how to switch branches on GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
+
+## Run ##
+
+Note that the repo will only contain the source code (not the compiled executable) contained within the `src` folder.
+You should thus build and execute the code using Cargo.
+
+We recommend you install Cargo using [Rustup](https://rustup.rs#).
+Then, from your terminal, navigate to the cloned kitten folder and run the following to compile the package:
+
+```shell
+cargo build
 ```
 
 Now run the compiled package by running:
 
-```bash
+```shell
 cargo run
 ```
 
-# Worksheet 0: Getting started with Rust
+## Worksheets ##
 
-[Worksheet 0](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of this package.
-Once you have finmished it, you should have the following files in your `kitten` directory.
+### Worksheet 0: Getting started with Rust ###
 
-* `src/main.rs` is a simple Hello World program written in Rust.
-* `Cargo.toml` is the manifest file containing metadata about the package. For more information, checkout the [Manifest Format](https://doc.rust-lang.org/cargo/reference/manifest.html).
+[Worksheet 0](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of the code at [worksheet-0 branch](https://github.com/manighahrmani/kitten/tree/worksheet-0).
 
-## Sources and reading material
+## Further reading
 
 Worksheet 0 is mainly based on [The Rust Programming Language textbook](https://doc.rust-lang.org/book/).
+
 We recommend reading the first chapter of this book at this stage.
