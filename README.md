@@ -18,7 +18,7 @@ Now run the compiled package by running:
 cargo run
 ```
 
-## Stage 1: A basic structure
+# Worksheet 0: Getting started with Rust
 
 [Worksheet 0](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of this package.
 Once you have finmished it, you should have the following files in your `kitten` directory.
