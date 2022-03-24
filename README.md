@@ -26,6 +26,8 @@ Once you have finmished it, you should have the following files in your `kitten`
 - `src/main.rs` is a simple Hello World program written in Rust.
 - `Cargo.toml` is the manifest file containing metadata about the package. For more information, checkout the [Manifest Format](https://doc.rust-lang.org/cargo/reference/manifest.html).
 
+## Stage 2
+
 ## Sources and reading material
 
 Worksheet 0 is mainly based on [The Rust Programming Language textbook](https://doc.rust-lang.org/book/).
