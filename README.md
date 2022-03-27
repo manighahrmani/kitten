@@ -47,7 +47,7 @@ Follow the instructions below to switch your branch to worksheet-x (where x is a
     git branch -v
     ```
 
-2. follow this [instruction on how to switch branches on GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
+2. if you are using the GitHub Desktop client, follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
 
 ## Run ##
 
@@ -73,8 +73,6 @@ cargo run
 
 [Worksheet 0](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of the code at [worksheet-0 branch](https://github.com/manighahrmani/kitten/tree/worksheet-0).
 
-## Further reading
+## Further reading ##
 
-Worksheet 0 is mainly based on [The Rust Programming Language textbook](https://doc.rust-lang.org/book/).
-
-We recommend reading the first chapter of this book at this stage.
+The textbook used to write the worksheets is [The Rust Programming Language textbook](https://doc.rust-lang.org/book/). 
