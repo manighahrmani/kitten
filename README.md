@@ -69,9 +69,7 @@ cargo run
 
 ## Worksheets ##
 
-### Worksheet 0: Getting started with Rust ###
-
-[Worksheet 0](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of the code at [worksheet-0 branch](https://github.com/manighahrmani/kitten/tree/worksheet-0).
+- [Worksheet 0: Getting started with Rust](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of a Hello World package.
 
 ## Further reading ##
 
