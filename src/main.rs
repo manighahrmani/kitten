@@ -9,26 +9,12 @@ fn main() {
   println!("How many files would you like to open?");
 
   let mut input: String = String::new();
-  match io::stdin().read_line(&mut input) {
-    Ok(n) => {
-      println!("{} bytes read", n);
-      println!("Your input was: ({})", input);
-    }
-    Err(error) => println!("Error while reading your input: {}", error),
-  }
+  io::stdin()
+    .read_line(&mut input)
+    .expect("Error while reading your input!");
 
-  //  let mut input: String = String::new();
-  //  if let Err(e) = io::stdin().read_line(&mut input) {
-  //   println!("Error while reading your input: {}", e);
-  // } else {
-  //   println!("Your input was: ({})", input);
-  // }
-
-  // let mut input: String = String::new();
-  //  io::stdin()
-  //  .read_line(&mut input)
-  //  .expect("Error while reading your input!");
-  // println!("Your input was: ({})", input);
+  input = input.trim().to_string();
+  println!("Your input was: ({})", input);
 
   println!("We need to open {} files.", number_of_files);
 
