@@ -11,13 +11,13 @@ fn main() {
   let mut input: String = String::new();
   io::stdin()
     .read_line(&mut input)
-    .expect("Error while reading your input!"); 
-  // on error, the program will panic and crash
+    .expect("Error while reading your input!");
+  // on reading errors, the program will panic and crash
 
   input = input.trim().to_string();
   println!("Your input was: ({})", input);
 
-  // on parsin errors, no error message will be printed
+  // on parsing errors, no error message will be printed
   number_of_files = input.parse().unwrap_or(1);
   // match input.parse::<u32>() {
   //   Ok(num) => {
