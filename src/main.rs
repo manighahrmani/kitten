@@ -4,7 +4,7 @@ fn main() {
   const KITTEN: &str = "🐱";
   println!("Hi from {}!", KITTEN);
 
-  let number_of_files: u32 = 1;
+  let number_of_files: u32 = 1; // immutable for now
 
   println!("How many files would you like to open?");
 
