@@ -1,33 +1,44 @@
 use std::io;
 
+mod lib;
+
 fn main() {
   const KITTEN: &str = "🐱";
   println!("Hi from {}!", KITTEN);
 
-  let number_of_files: u32;
+  let mut number_of_files: u32;
 
   println!("How many files would you like to open?");
 
   let mut input: String = String::new();
-  io::stdin()
-    .read_line(&mut input)
-    .expect("Error while reading your input!");
-  // on reading errors, the program will panic and crash
+  match io::stdin().read_line(&mut input) {
+    Ok(_) => {
+      input.pop();
+      println!("Your input was: ({})", input);
+    }
+    Err(error) => {
+      panic!("Error while reading your input: {}", error);
+    }
+  }
 
-  input = input.trim().to_string();
-  println!("Your input was: ({})", input);
+  number_of_files = kitten::parse_number_of_files(&input).unwrap();
 
-  // on parsing errors, no error message will be printed
-  number_of_files = input.parse().unwrap_or(1);
   // match input.parse::<u32>() {
+  //   Ok(0) => {
+  //     panic!("Error while parsing your input: You need to provide at least 1 filename");
+  //   }
   //   Ok(num) => {
   //     number_of_files = num;
   //   }
-  //   Err(e) => {
-  //     println!("Error on parsing input: {}", e);
+  //   Err(error) => {
+  //     panic!("Error while parsing your input: {}", error);
   //   }
   // }
-  println!("We need to open {} files.", number_of_files);
+
+  for i in 1..number_of_files {
+    println!("Please enter the name/path to a file {}: ", i);
+    // need to ask for an input here
+  }
 
   println!("Bye from {}!", KITTEN);
 }
