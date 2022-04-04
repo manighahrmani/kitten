@@ -1,7 +1,5 @@
 use std::io;
 
-mod lib;
-
 fn main() {
   const KITTEN: &str = "🐱";
   println!("Hi from {}!", KITTEN);
