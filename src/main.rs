@@ -51,3 +51,20 @@ fn main() {
 
   println!("Bye from {}!", KITTEN);
 }
+
+fn get_first_word(input: String) -> String {
+  let mut first_word = String::new();
+  for c in input.chars() {
+    if c == ' ' {
+      break;
+    }
+    first_word.push(c);
+  }
+  first_word
+}
+
+fn keep_only_first_word(input: String) -> String {
+  let mut words = input.split_whitespace();
+  let first_word = words.next().unwrap();
+  first_word.to_string()
+}
