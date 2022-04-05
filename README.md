@@ -71,7 +71,11 @@ cargo run
 
 - [Worksheet 0: Getting started with Rust](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of a Hello World package.
 
-- [Worksheet 1: Basics of Types, Variable & I/O](https://docs.google.com/document/d/1J5LmgJFnPYLjJBGiVSL7BezFMMhLZB2oqxctPSc2cHc/edit?usp=sharing) introduces you to variables and data types in rust and ends with reading user's input from standard input.
+- [Worksheet 1: Types, Variable & Input/Output](https://docs.google.com/document/d/1J5LmgJFnPYLjJBGiVSL7BezFMMhLZB2oqxctPSc2cHc/edit?usp=sharing) introduces you to variables and data types in Rust and ends with reading user's input from standard input.
+
+- [Worksheet 2: Strings, Errors & Control flow](https://docs.google.com/document/d/1HfJy0VWwNgMSGts4NSk02kDhHqGVJ6PN8dktgqJS074/edit?usp=sharing) discusses methods on the &str/String types and errors that may arise while working with them. Ends with an introduction of control flow in the language.
+
+-[Worksheet 3: ]()
 
 ## Further reading ##
 
