@@ -15,7 +15,7 @@ fn main() {
   let mut input: String = String::new();
   match io::stdin().read_line(&mut input) {
     Ok(_) => {
-      input.pop();
+      input = first_word(input);
     }
     Err(error) => {
       panic!("Error while reading your input: {}", error);
@@ -29,7 +29,7 @@ fn main() {
       "[{}/{}] Please enter the name/path to the {} file:",
       number_of_file,
       number_of_files,
-      ordinal(number_of_file)
+      as_ordinal(number_of_file)
     );
 
     // need to ask for input here
@@ -38,7 +38,7 @@ fn main() {
   println!("Bye from {}!", KITTEN);
 }
 
-fn ordinal(number: u32) -> String {
+fn as_ordinal(number: u32) -> String {
   number.to_string()
     + match number % 10 {
       1 if number % 100 != 11 => "st",
@@ -48,19 +48,23 @@ fn ordinal(number: u32) -> String {
     }
 }
 
-fn _get_first_word(input: String) -> String {
-  let mut first_word = String::new();
-  for c in input.chars() {
-    if c == ' ' {
-      break;
-    }
-    first_word.push(c);
+fn first_word(input: String) -> String {
+  let mut words = input.split_whitespace();
+  let first_word = words.next();
+  match first_word {
+    Some(word) => word.to_string(),
+    None => String::new(),
   }
-  first_word
 }
 
-fn _keep_only_first_word(input: String) -> String {
-  let mut words = input.split_whitespace();
-  let first_word = words.next().unwrap();
-  first_word.to_string()
-}
+// An alternative to the above function
+// fn _first_word(input: String) -> String {
+//   let mut first_word = String::new();
+//   for c in input.chars() {
+//     if c == ' ' || c == '\n' {
+//       break;
+//     }
+//     first_word.push(c);
+//   }
+//   first_word
+// }
