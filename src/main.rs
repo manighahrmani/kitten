@@ -33,9 +33,9 @@ fn main() {
   for number_of_file in 1..(number_of_files + 1) {
     let ordinal = number_of_file.to_string()
       + match number_of_file % 10 {
-        1 if number_of_file != 11 => "st",
-        2 if number_of_file != 12 => "nd",
-        3 if number_of_file != 13 => "rd",
+        1 if number_of_file % 100 != 11 => "st",
+        2 if number_of_file % 100 != 12 => "nd",
+        3 if number_of_file % 100 != 13 => "rd",
         _ => "th",
       };
 
