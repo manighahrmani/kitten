@@ -41,9 +41,9 @@ fn main() {
 fn ordinal(number: u32) -> String {
   number.to_string()
     + match number % 10 {
-      1 if number != 11 => "st",
-      2 if number != 12 => "nd",
-      3 if number != 13 => "rd",
+      1 if number % 100 != 11 => "st",
+      2 if number % 100 != 12 => "nd",
+      3 if number % 100 != 13 => "rd",
       _ => "th",
     }
 }
