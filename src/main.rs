@@ -1,9 +1,5 @@
 use std::io;
 
-mod lib;
-
-use kitten::helper::parse_number_of_files;
-
 fn main() {
   const KITTEN: &str = "🐱";
   println!("Hi from {}!", KITTEN);
@@ -22,7 +18,17 @@ fn main() {
     }
   }
 
-  number_of_files = parse_number_of_files(&input).unwrap();
+  match input.parse::<u32>() {
+    Ok(0) => {
+      panic!("Error while parsing your input: You need to provide at least 1 filename");
+    }
+    Ok(num) => {
+      number_of_files = num;
+    }
+    Err(error) => {
+      panic!("Error while parsing your input: {}", error);
+    }
+  }
 
   for number_of_file in 1..(number_of_files + 1) {
     println!(
@@ -59,6 +65,16 @@ mod string_helper {
       }
   }
 
+  /// Retruns the first word of a given string.
+  ///
+  /// # Examples
+  ///
+  /// ```
+  /// let arg = String::from("23 files ");
+  /// let answer = kitten::string_helper::first_word(arg);
+  ///
+  /// assert_eq!(String::from("23"), answer);
+  /// ```
   fn first_word(input: String) -> String {
     let mut words = input.split_whitespace();
     let first_word = words.next();
@@ -66,6 +82,5 @@ mod string_helper {
       Some(word) => word.to_string(),
       None => String::new(),
     }
-    // --snip--
   }
 }
