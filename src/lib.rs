@@ -5,18 +5,24 @@ const PARSE_ERR_MAX: &str = "Error parsing your input: At most 4294967295 files 
 const PARSE_ERR_MIN: &str = "Error parsing your input: At least 1 file is required";
 const PARSE_ERR_OTHER: &str = "Error parsing your input: invalid digit found in string";
 
-pub fn parse_number_of_files(input: &str) -> Result<u32, String> {
-  match input.parse::<isize>() {
-    Ok(num) if num > U32_MAX as isize => Err(PARSE_ERR_MAX.to_string()),
-    Ok(num) if num <= 0 => Err(PARSE_ERR_MIN.to_string()),
-    Ok(num) => Ok(num as u32),
-    Err(error) => Err(format!("Error parsing your input: {}", error)),
+pub mod helper {
+  use super::{PARSE_ERR_MAX, PARSE_ERR_MIN, PARSE_ERR_OTHER, U32_MAX};
+
+  pub fn parse_number_of_files(input: &str) -> Result<u32, String> {
+    match input.parse::<isize>() {
+      Ok(num) if num > U32_MAX as isize => Err(PARSE_ERR_MAX.to_string()),
+      Ok(num) if num <= 0 => Err(PARSE_ERR_MIN.to_string()),
+      Ok(num) => Ok(num as u32),
+      Err(error) => Err(format!("Error parsing your input: {}", error)),
+    }
   }
 }
 
 #[cfg(test)]
 mod tests {
-  use super::*;
+  use super::{
+    helper::parse_number_of_files, PARSE_ERR_MAX, PARSE_ERR_MIN, PARSE_ERR_OTHER, U32_MAX,
+  };
 
   #[test]
   fn parse_number_of_files_ok() {
