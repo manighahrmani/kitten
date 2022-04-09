@@ -75,7 +75,7 @@ cargo run
 
 - [Worksheet 2: Strings, Errors & Control flow](https://docs.google.com/document/d/1HfJy0VWwNgMSGts4NSk02kDhHqGVJ6PN8dktgqJS074/edit?usp=sharing) discusses methods on the &str/String types and errors that may arise while working with them. Ends with an introduction of control flow in the language.
 
--[Worksheet 3: Modularization & Documentation](https://docs.google.com/document/d/18jFJCItgXFX6bDAsA7tSs69jKCeuzHi-N7-y-MgeUcQ/edit?usp=sharing) to increase the maintainability of your program, you should start to modularize your code and document it. This worksheet aims to help you with both.
+- [Worksheet 3: Modularization & Documentation](https://docs.google.com/document/d/18jFJCItgXFX6bDAsA7tSs69jKCeuzHi-N7-y-MgeUcQ/edit?usp=sharing) to increase the maintainability of your program, you should start to modularize your code and document it. This worksheet aims to help you with both.
 
 ## Further reading ##
 
