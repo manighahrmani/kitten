@@ -1,64 +1,50 @@
-#![allow(unused)]
+pub mod string_helper {
+  /// Retruns the ordinal number given a positive integer
+  ///
+  /// # Arguments
+  ///
+  /// * `number` - The number to convert to an ordinal number
+  ///
+  /// # Examples
+  ///
+  /// ```
+  /// use kitten::string_helper::as_ordinal;
+  /// let arg = 1;
+  /// let answer = as_ordinal(arg);
+  ///
+  /// assert_eq!(String::from("1st"), answer);
+  /// ```
+  pub fn as_ordinal(number: u32) -> String {
+    number.to_string()
+      + match number % 10 {
+        1 if number % 100 != 11 => "st",
+        2 if number % 100 != 12 => "nd",
+        3 if number % 100 != 13 => "rd",
+        _ => "th",
+      }
+  }
 
-const U32_MAX: u32 = std::u32::MAX;
-const PARSE_ERR_MAX: &str = "Error parsing your input: At most 4294967295 files are allowed";
-const PARSE_ERR_MIN: &str = "Error parsing your input: At least 1 file is required";
-const PARSE_ERR_OTHER: &str = "Error parsing your input: invalid digit found in string";
-
-pub mod helper {
-  use super::{PARSE_ERR_MAX, PARSE_ERR_MIN, PARSE_ERR_OTHER, U32_MAX};
-
-  pub fn parse_number_of_files(input: &str) -> Result<u32, String> {
-    match input.parse::<isize>() {
-      Ok(num) if num > U32_MAX as isize => Err(PARSE_ERR_MAX.to_string()),
-      Ok(num) if num <= 0 => Err(PARSE_ERR_MIN.to_string()),
-      Ok(num) => Ok(num as u32),
-      Err(error) => Err(format!("Error parsing your input: {}", error)),
+  /// Retruns the first word of a given string
+  ///
+  /// # Arguments
+  ///
+  /// * `text` - The text to get the first word from
+  ///
+  /// # Examples
+  ///
+  /// ```
+  /// use kitten::string_helper::first_word;
+  /// let arg = "23 files ";
+  /// let answer = first_word(arg);
+  ///
+  /// assert_eq!(23, answer);
+  /// ```
+  pub fn first_word(text: String) -> String {
+    let mut words = text.split_whitespace();
+    let first_word = words.next();
+    match first_word {
+      Some(word) => word.to_string(),
+      None => String::new(),
     }
-  }
-}
-
-#[cfg(test)]
-mod tests {
-  use super::{
-    helper::parse_number_of_files, PARSE_ERR_MAX, PARSE_ERR_MIN, PARSE_ERR_OTHER, U32_MAX,
-  };
-
-  #[test]
-  fn parse_number_of_files_ok() {
-    assert_eq!(parse_number_of_files("1").unwrap(), 1);
-    assert_eq!(
-      parse_number_of_files(&U32_MAX.to_string()).unwrap(),
-      U32_MAX
-    );
-  }
-
-  #[test]
-  fn parse_number_of_files_out_of_bound() {
-    assert_eq!(
-      parse_number_of_files("0").unwrap_err(),
-      PARSE_ERR_MIN.to_string()
-    );
-    assert_eq!(
-      parse_number_of_files("-1").unwrap_err(),
-      PARSE_ERR_MIN.to_string()
-    );
-    let max_plus_one: u64 = U32_MAX as u64 + 1;
-    assert_eq!(
-      parse_number_of_files(&max_plus_one.to_string()).unwrap_err(),
-      PARSE_ERR_MAX.to_string()
-    );
-  }
-
-  #[test]
-  fn parse_number_of_files_invalid() {
-    assert_eq!(
-      parse_number_of_files("--").unwrap_err(),
-      PARSE_ERR_OTHER.to_string()
-    );
-    assert_eq!(
-      parse_number_of_files(" 200").unwrap_err(),
-      PARSE_ERR_OTHER.to_string()
-    );
   }
 }
