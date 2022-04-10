@@ -50,3 +50,38 @@ pub mod string_helper {
     }
   }
 }
+
+#[cfg(test)]
+mod string_helper_tests {
+  use super::*;
+
+  #[test]
+  fn test_as_ordinal_th() {
+    let cases: Vec<(u32, &str)> = vec![
+      (10, "10th"),
+      (111, "111th"),
+      (0, "0th"),
+      (999, "999th"),
+      (250, "250th"),
+    ];
+    for case in cases {
+      test_as_ordinal(case.0, String::from(case.1));
+    }
+  }
+
+  fn test_as_ordinal(number: u32, expected_answer: String) {
+    let answer = string_helper::as_ordinal(number);
+    assert_eq!(expected_answer, answer);
+  }
+
+  #[test]
+  fn test_first_word_works() {
+    let arg = String::from("23 files ");
+    test_first_word(arg, String::from("23"));
+  }
+
+  fn test_first_word(text: String, expected_answer: String) {
+    let answer = string_helper::first_word(text);
+    assert_eq!(expected_answer, answer);
+  }
+}
