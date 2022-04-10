@@ -34,10 +34,12 @@ pub mod string_helper {
   ///
   /// ```
   /// use kitten::string_helper::first_word;
-  /// let arg = "23 files ";
+  /// let arg = String::from("23 files ");
   /// let answer = first_word(arg);
   ///
-  /// assert_eq!(23, answer);
+  /// let expected_answer = String::from("23");
+  ///
+  /// assert_eq!(expected_answer, answer);
   /// ```
   pub fn first_word(text: String) -> String {
     let mut words = text.split_whitespace();
