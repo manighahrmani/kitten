@@ -1,9 +1,9 @@
 pub mod string_helper {
-  /// Retruns the ordinal number given a positive integer
+  /// Retruns the ordinal number (e.g. 1st) given a positive integer
   ///
   /// # Arguments
   ///
-  /// * `number` - The number to convert to an ordinal number
+  /// * `number` - The integer to convert to an ordinal number
   ///
   /// # Examples
   ///
@@ -28,7 +28,7 @@ pub mod string_helper {
   ///
   /// # Arguments
   ///
-  /// * `text` - The text to get the first word from
+  /// * `text` - The string to get the first word from
   ///
   /// # Examples
   ///
