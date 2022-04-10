@@ -68,6 +68,26 @@ mod string_helper_tests {
       test_as_ordinal(case.0, String::from(case.1));
     }
   }
+  #[test]
+  fn test_as_ordinal_not_th() {
+    let cases: Vec<(u32, &str)> = vec![
+      (1, "1st"),
+      (2, "2nd"),
+      (3, "3rd"),
+      (101, "101st"),
+      (102, "102nd"),
+      (103, "103rd"),
+      (501, "501st"),
+      (502, "502nd"),
+      (503, "503rd"),
+      (10901, "10901st"),
+      (10902, "10902nd"),
+      (10903, "10903rd"),
+    ];
+    for case in cases {
+      test_as_ordinal(case.0, String::from(case.1));
+    }
+  }
 
   fn test_as_ordinal(number: u32, expected_answer: String) {
     let answer = string_helper::as_ordinal(number);
@@ -76,8 +96,19 @@ mod string_helper_tests {
 
   #[test]
   fn test_first_word_works() {
-    let arg = String::from("23 files ");
-    test_first_word(arg, String::from("23"));
+    let cases: Vec<(&str, &str)> = vec![
+      ("🐭🦊 🐻🦁 🐻‍❄️🐼🐶", "🐭🦊"),
+      ("Lorem ipsum dolor sit amet, ", "Lorem"),
+      (
+        "Lorem 
+ipsum dolor sit amet, ",
+        "Lorem",
+      ),
+      ("", ""),
+    ];
+    for case in cases {
+      test_first_word(String::from(case.0), String::from(case.1));
+    }
   }
 
   fn test_first_word(text: String, expected_answer: String) {
