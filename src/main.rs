@@ -1,4 +1,5 @@
 use kitten::string_helper;
+use std::env; // TODO: remove this later
 use std::io;
 
 fn main() {
@@ -39,7 +40,18 @@ fn main() {
       string_helper::as_ordinal(number_of_file)
     );
 
-    // need to ask for input here
+    match io::stdin().read_line(&mut input) {
+      Ok(_) => {
+        input = string_helper::first_word(input);
+        println!("Opening file: {}", input); // for debugging
+      }
+      Err(error) => {
+        panic!("Error while reading your input: {}", error);
+      }
+    }
+
+    let path = env::current_dir().unwrap();
+    println!("The current directory is {}", path.display());
   }
 
   println!("Bye from {}!", KITTEN);

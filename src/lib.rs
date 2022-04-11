@@ -1,3 +1,6 @@
+#![allow(unused_imports)]
+#![allow(dead_code)] // TODO: Needs to be removed later
+
 pub mod string_helper {
   /// Retruns the ordinal number (e.g. 1st) given a positive integer
   ///
@@ -58,7 +61,7 @@ mod string_helper_tests {
     use crate::string_helper;
 
     #[test]
-    fn test_as_ordinal_th() {
+    fn as_ordinal_th() {
       let cases: Vec<(u32, &str)> = vec![
         (10, "10th"),
         (111, "111th"),
@@ -67,11 +70,11 @@ mod string_helper_tests {
         (250, "250th"),
       ];
       for case in cases {
-        test_as_ordinal(case.0, String::from(case.1));
+        as_ordinal_test(case.0, String::from(case.1));
       }
     }
     #[test]
-    fn test_as_ordinal_not_th() {
+    fn as_ordinal_not_th() {
       let cases: Vec<(u32, &str)> = vec![
         (1, "1st"),
         (2, "2nd"),
@@ -87,11 +90,11 @@ mod string_helper_tests {
         (10903, "10903rd"),
       ];
       for case in cases {
-        test_as_ordinal(case.0, String::from(case.1));
+        as_ordinal_test(case.0, String::from(case.1));
       }
     }
 
-    fn test_as_ordinal(number: u32, expected_answer: String) {
+    fn as_ordinal_test(number: u32, expected_answer: String) {
       let answer = string_helper::as_ordinal(number);
       assert_eq!(expected_answer, answer);
     }
@@ -121,5 +124,30 @@ ipsum dolor sit amet, ",
       let answer = string_helper::first_word(text);
       assert_eq!(expected_answer, answer);
     }
+  }
+}
+
+mod file_helper {
+  pub fn file_content(filename: &str) -> String {
+    todo!();
+  }
+}
+
+#[cfg(test)]
+mod file_helper_tests {
+  use super::file_helper;
+
+  #[test]
+  fn file_content_file_exists() {
+    let filename = "text.txt";
+    let content = String::from(
+      "I'm closer to the Golden Dawn
+Immersed in Crowley's uniform of imagery
+I'm living in a silent film
+Portraying Himmler's sacred realm of dream reality
+",
+    );
+    assert_eq!(content, file_helper::file_content(filename));
+    todo!();
   }
 }
