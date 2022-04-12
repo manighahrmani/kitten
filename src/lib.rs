@@ -127,16 +127,12 @@ ipsum dolor sit amet, ",
   }
 }
 
-mod file_helper {
+pub mod file_helper {
 
-  use std::fs;
+  use std::{fs, io};
 
-  pub fn file_content(filename: String) -> String {
-    let content: String = match fs::read_to_string(filename) {
-      Ok(content) => content,
-      _ => format!("File ({}) could not be found or opened 😿.", filename),
-    };
-    content
+  pub fn file_content(filename: String) -> io::Result<String> {
+    fs::read_to_string(filename)
   }
 }
 
@@ -154,13 +150,12 @@ I'm living in a silent film
 Portraying Himmler's sacred realm of dream reality
 ",
     );
-    assert_eq!(content, file_helper::file_content(filename));
+    assert_eq!(content, file_helper::file_content(filename).unwrap());
   }
 
   #[test]
   fn file_content_file_not_exists() {
-    let filename = String::from("fake.txt");
-    let content = format!("File ({}) could not be found or opened 😿.", filename);
-    assert_eq!(content, file_helper::file_content(filename));
+    let filename = String::from("imaginary_dir/imaginary_file.txt");
+    assert!(file_helper::file_content(filename).is_err());
   }
 }

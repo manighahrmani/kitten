@@ -1,5 +1,4 @@
-use kitten::string_helper;
-use std::env; // TODO: remove this later
+use kitten::{file_helper, string_helper};
 use std::io;
 
 fn main() {
@@ -32,6 +31,8 @@ fn main() {
     }
   }
 
+  let mut output = String::new();
+
   for number_of_file in 1..(number_of_files + 1) {
     println!(
       "[{}/{}] Please enter the name/path to the {} file:",
@@ -49,10 +50,13 @@ fn main() {
         panic!("Error while reading your input: {}", error);
       }
     }
-
-    let path = env::current_dir().unwrap();
-    println!("The current directory is {}", path.display());
+    //--snip--
+    // TODO: remove this
+    // let filename = input.clone();
+    output = output + &file_helper::file_content(input).unwrap();
   }
+
+  println!("Here is the output:\n{}", output);
 
   println!("Bye from {}!", KITTEN);
 }
