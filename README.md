@@ -77,6 +77,8 @@ cargo run
 
 - [Worksheet 3: Modularization & Documentation](https://docs.google.com/document/d/18jFJCItgXFX6bDAsA7tSs69jKCeuzHi-N7-y-MgeUcQ/edit?usp=sharing) to increase the maintainability of your program, you should start to modularize your code and document it. This worksheet aims to help you with both.
 
+- [Worksheet 4: Testing & File handling basics](https://docs.google.com/document/d/1Ni4DrGqYZI3D0Xa5FdesZctYAuFeZ5GsYCRgpivPI4U/edit?usp=sharing) this worksheet introduces you to testing plus teaches you the basics of file handling with Test Driven Development.
+
 ## Further reading ##
 
 The textbook used to write the worksheets is [The Rust Programming Language textbook](https://doc.rust-lang.org/book/). 
