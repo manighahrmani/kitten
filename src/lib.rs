@@ -128,7 +128,7 @@ ipsum dolor sit amet, ",
 }
 
 mod file_helper {
-  pub fn file_content(filename: &str) -> String {
+  pub fn file_content(filename: String) -> String {
     todo!();
   }
 }
@@ -139,7 +139,7 @@ mod file_helper_tests {
 
   #[test]
   fn file_content_file_exists() {
-    let filename = "text.txt";
+    let filename = String::from("text.txt");
     let content = String::from(
       "I'm closer to the Golden Dawn
 Immersed in Crowley's uniform of imagery
@@ -148,6 +148,12 @@ Portraying Himmler's sacred realm of dream reality
 ",
     );
     assert_eq!(content, file_helper::file_content(filename));
-    todo!();
+  }
+
+  #[test]
+  fn file_content_file_not_exists() {
+    let filename = String::from("fake.txt");
+    let content = format!("File ({}) could not be found or opened 😿.", filename);
+    assert_eq!(content, file_helper::file_content(filename));
   }
 }
