@@ -128,8 +128,15 @@ ipsum dolor sit amet, ",
 }
 
 mod file_helper {
+
+  use std::fs;
+
   pub fn file_content(filename: String) -> String {
-    todo!();
+    let content: String = match fs::read_to_string(filename) {
+      Ok(content) => content,
+      _ => format!("File ({}) could not be found or opened 😿.", filename),
+    };
+    content
   }
 }
 
