@@ -53,7 +53,7 @@ fn main() {
     //--snip--
     // TODO: remove this
     // let filename = input.clone();
-    output = output + &file_helper::file_content(input).unwrap();
+    output = output + &file_helper::file_content(&input).unwrap();
   }
 
   println!("Here is the output:\n{}", output);

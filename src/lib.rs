@@ -131,8 +131,11 @@ pub mod file_helper {
 
   use std::{fs, io};
 
-  pub fn file_content(filename: String) -> io::Result<String> {
-    fs::read_to_string(filename)
+  pub fn file_content(filename: &str) -> Result<String, String> {
+    match fs::read_to_string(filename.to_string()) {
+      Ok(content) => Ok(content),
+      Err(error) => Err(format!("Error reading content of {}: {}", filename, error)),
+    }
   }
 }
 
@@ -142,7 +145,7 @@ mod file_helper_tests {
 
   #[test]
   fn file_content_file_exists() {
-    let filename = String::from("text.txt");
+    let filename = "text.txt";
     let content = String::from(
       "I'm closer to the Golden Dawn
 Immersed in Crowley's uniform of imagery
@@ -155,7 +158,7 @@ Portraying Himmler's sacred realm of dream reality
 
   #[test]
   fn file_content_file_not_exists() {
-    let filename = String::from("imaginary_dir/imaginary_file.txt");
+    let filename = "imaginary_dir/imaginary_file.txt";
     assert!(file_helper::file_content(filename).is_err());
   }
 }
