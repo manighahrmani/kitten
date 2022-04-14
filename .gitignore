@@ -17,6 +17,5 @@ debugging information
 *.pdb
 
 
-# Added by cargo
-
-/target
+# Added to remove text files generated for testing
+/*.txt

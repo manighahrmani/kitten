@@ -1,6 +1,3 @@
-#![allow(unused_imports)]
-#![allow(dead_code)] // TODO: Needs to be removed later
-
 pub mod string_helper {
   /// Retruns the ordinal number (e.g. 1st) given a positive integer
   ///
@@ -129,12 +126,45 @@ ipsum dolor sit amet, ",
 
 pub mod file_helper {
 
-  use std::{fs, io};
+  use std::fs;
 
+  /// Retruns the a result that is either Ok(conentet)
+  /// where content is the file's conent as a String
+  /// or Err(error) where error is the error message as a String
+  ///
+  /// # Arguments
+  ///
+  /// * `filename` - The string slice of the path to the file
+  ///
+  /// # Errors
+  ///
+  /// * If the file does not exist - "`filename` does not exist"
+  /// * If the file is not readable - "`filename` is not readable"
+  /// * For all other errors - "Unknown error opening `filename`"
+  ///
+  /// # Examples
+  ///
+  /// ```no_run
+  /// use kitten::file_helper::file_content;
+  ///
+  /// fn main() {
+  ///    let mut output = file_content("foo.txt");
+  ///    match output {
+  ///     Ok(content) => println!("File's conentent is: {}", content),
+  ///     Err(error) => println!("Error opening file: {}", error),
+  ///     };
+  /// }
+  /// ```
   pub fn file_content(filename: &str) -> Result<String, String> {
-    match fs::read_to_string(filename.to_string()) {
+    match fs::read_to_string(filename) {
       Ok(content) => Ok(content),
-      Err(error) => Err(format!("Error reading content of {}: {}", filename, error)),
+      Err(error) if format!("{}", error).contains("No such file") => {
+        Err(format!("{} does not exist", filename))
+      }
+      Err(error) if format!("{}", error).contains("Permission denied") => {
+        Err(format!("{} is not readable", filename))
+      }
+      Err(_) => Err(format!("Unknown error opening {}", filename)),
     }
   }
 }
@@ -144,8 +174,28 @@ mod file_helper_tests {
   use super::file_helper;
 
   #[test]
+  fn file_content_file_not_exists() {
+    let filename = "imaginary_dir/imaginary_file.txt"; // does not exist
+    assert!(file_helper::file_content(filename).is_err());
+    assert_eq!(
+      file_helper::file_content(filename).unwrap_err(),
+      "imaginary_dir/imaginary_file.txt does not exist"
+    );
+  }
+
+  #[test]
+  fn file_content_file_not_readable() {
+    let filename = "locked.txt"; // is a file that does not have any permissions
+    assert!(file_helper::file_content(filename).is_err());
+    assert_eq!(
+      file_helper::file_content(filename).unwrap_err(),
+      "locked.txt is not readable"
+    );
+  }
+
+  #[test]
   fn file_content_file_exists() {
-    let filename = "text.txt";
+    let filename = "text.txt"; // is a file with content below
     let content = String::from(
       "I'm closer to the Golden Dawn
 Immersed in Crowley's uniform of imagery
@@ -154,11 +204,5 @@ Portraying Himmler's sacred realm of dream reality
 ",
     );
     assert_eq!(content, file_helper::file_content(filename).unwrap());
-  }
-
-  #[test]
-  fn file_content_file_not_exists() {
-    let filename = "imaginary_dir/imaginary_file.txt";
-    assert!(file_helper::file_content(filename).is_err());
   }
 }

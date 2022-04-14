@@ -41,19 +41,25 @@ fn main() {
       string_helper::as_ordinal(number_of_file)
     );
 
+    input.clear();
     match io::stdin().read_line(&mut input) {
       Ok(_) => {
         input = string_helper::first_word(input);
-        println!("Opening file: {}", input); // for debugging
       }
       Err(error) => {
         panic!("Error while reading your input: {}", error);
       }
     }
-    //--snip--
-    // TODO: remove this
-    // let filename = input.clone();
-    output = output + &file_helper::file_content(&input).unwrap();
+
+    let file_content_result: Result<String, String> = file_helper::file_content(&input);
+    match file_content_result {
+      Ok(file_content) => {
+        output += &file_content;
+      }
+      Err(error) => {
+        panic!("Error while reading file {}: {}", input, error);
+      }
+    }
   }
 
   println!("Here is the output:\n{}", output);
