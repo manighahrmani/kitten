@@ -67,6 +67,19 @@ Now run the compiled package by running:
 cargo run
 ```
 
+Open the documentation for the package by running:
+
+```shell
+cargo doc --open
+```
+
+Test the entire package by running the following. But note that we have not included the text files used in some of the tests. You would need to create files as outlined by the comments in the `lib.rs`.
+
+```shell
+cargo test
+```
+
+
 ## Worksheets ##
 
 - [Worksheet 0: Getting started with Rust](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of a Hello World package.
