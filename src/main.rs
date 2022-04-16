@@ -1,63 +1,33 @@
 use kitten::{file_helper, string_helper};
-use std::io;
+use std::env;
 
 fn main() {
   const KITTEN: &str = "🐱";
   println!("Hi from {}!", KITTEN);
 
-  let number_of_files: u32;
+  let passed_args: env::Args = env::args();
+  let filenames: Vec<String> = arguments::parse(passed_args).unwrap().orphans;
 
-  println!("How many files would you like to open?");
-
-  let mut input: String = String::new();
-  match io::stdin().read_line(&mut input) {
-    Ok(_) => {
-      input = string_helper::first_word(input);
-    }
-    Err(error) => {
-      panic!("Error while reading your input: {}", error);
-    }
-  }
-
-  match input.parse::<u32>() {
-    Ok(0) => {
-      panic!("Error while parsing your input: You need to provide at least 1 filename");
-    }
-    Ok(num) => {
-      number_of_files = num;
-    }
-    Err(error) => {
-      panic!("Error while parsing your input: {}", error);
-    }
-  }
+  // TODO: Add a check for help function
 
   let mut output = String::new();
 
-  for number_of_file in 1..(number_of_files + 1) {
+  for index_of_filename in 0..filenames.len() {
+    let filename: &str = filenames.get(index_of_filename).unwrap();
+
     println!(
-      "[{}/{}] Please enter the name/path to the {} file:",
-      number_of_file,
-      number_of_files,
-      string_helper::as_ordinal(number_of_file)
+      "{} file is being processed: {}",
+      string_helper::as_ordinal(index_of_filename as u32),
+      filename
     );
 
-    input.clear();
-    match io::stdin().read_line(&mut input) {
-      Ok(_) => {
-        input = string_helper::first_word(input);
-      }
-      Err(error) => {
-        panic!("Error while reading your input: {}", error);
-      }
-    }
-
-    let file_content_result: Result<String, String> = file_helper::file_content(&input);
+    let file_content_result: Result<String, String> = file_helper::file_content(filename);
     match file_content_result {
       Ok(file_content) => {
         output += &file_content;
       }
       Err(error) => {
-        panic!("Error while reading file {}: {}", input, error);
+        panic!("Error while reading file {}: {}", filename, error);
       }
     }
   }
