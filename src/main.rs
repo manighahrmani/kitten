@@ -45,11 +45,11 @@ fn main() {
 
     println!(
       "{} file is being processed: {}",
-      string_helper::as_ordinal(index as u32),
+      string_helper::as_ordinal((index + 1) as u32),
       filename
     );
 
-    match file_helper::file_content(filename){
+    match file_helper::file_content(filename) {
       Ok(file_content) => {
         output += &file_content;
       }
