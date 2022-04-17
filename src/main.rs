@@ -51,8 +51,7 @@ fn main() {
       }
     }
 
-    let file_content_result: Result<String, String> = file_helper::file_content(&input);
-    match file_content_result {
+    match file_helper::file_content(&input){
       Ok(file_content) => {
         output += &file_content;
       }
