@@ -45,14 +45,12 @@ fn main() {
   //     filename
   //   );
 
-  //   match file_helper::file_content(filename) {
-  //     Ok(file_content) => {
-  //       output += &file_content;
-  //     }
-  //     Err(error) => {
-  //       panic!("Error while reading file {}: {}", filename, error);
-  //     }
-  //   }
+  //   let file_content: String =
+  //     file_helper::file_content(filename).unwrap_or_else(|error: String| {
+  //       panic!("Error while reading file {filename}: {error}");
+  //     });
+
+  //   output += &file_content;
   // }
 
   println!("Here is the output:\n{}", output);
