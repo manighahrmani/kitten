@@ -34,25 +34,6 @@ fn main() {
         accumulator + &file_content
       });
 
-  // let mut output = String::new();
-
-  // for index in 0..filenames.len() {
-  //   let filename: &str = filenames[index].as_str();
-
-  //   println!(
-  //     "{} file is being processed: {}",
-  //     string_helper::as_ordinal((index + 1) as u32),
-  //     filename
-  //   );
-
-  //   let file_content: String =
-  //     file_helper::file_content(filename).unwrap_or_else(|error: String| {
-  //       panic!("Error while reading file {filename}: {error}");
-  //     });
-
-  //   output += &file_content;
-  // }
-
   println!("Here is the output:\n{}", output);
 
   println!("Bye from {}!", KITTEN);
