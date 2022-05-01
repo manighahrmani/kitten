@@ -1,5 +1,5 @@
 use kitten::file_helper;
-use std::env;
+use std::{env, process};
 
 fn main() {
   let passed_args: env::Args = env::args();
@@ -9,7 +9,8 @@ fn main() {
       filenames = args.orphans;
     }
     Err(error) => {
-      panic!("Error while parsing your input: {}", error);
+      eprintln!("Error while parsing your input: {}", error);
+      process::exit(1);
     }
   }
 
@@ -26,7 +27,8 @@ fn main() {
         //   filename
         // );
         let file_content: String = file_helper::file_content(filename).unwrap_or_else(|error| {
-          panic!("Error while reading file {}: {}", filename, error);
+          eprintln!("Error while reading file {}: {}", filename, error);
+          process::exit(1);
         });
         accumulator + &file_content
       });
