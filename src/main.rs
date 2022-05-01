@@ -9,6 +9,7 @@ fn main() {
       filenames = args.orphans;
     }
     Err(error) => {
+      // TODO: Need to explain this
       eprintln!("Error while parsing your input: {}", error);
       process::exit(1);
     }
