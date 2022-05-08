@@ -1,8 +1,8 @@
-# Kitten: A mini cat command 🐱 #
+# Kitten: A mini cat command 🐱
 
 In this repo, we will use Rust to build a mini version of the command line tool cat.
 
-## Clone ##
+## Clone
 
 Please **do not download** the repo as a zipped file.
 We will be updating its content as time goes on.
@@ -15,18 +15,19 @@ Otherwise, on your own computers, feel free to install [git](https://git-scm.com
 
 1. use `git` to clone it:
 
-    ````shell
-    git clone https://github.com/manighahrmani/kitten.git
-    ````
+   ```shell
+   git clone https://github.com/manighahrmani/kitten.git
+   ```
 
 2. use the GitHub CLI tool:
-    ```shell
-    gh repo clone manighahrmani/kitten
-    ````
+
+   ```shell
+   gh repo clone manighahrmani/kitten
+   ```
 
 3. click the Code button and select Open with GitHub Desktop.
 
-## Select the branch ##
+## Select the branch
 
 As we go through every worksheet, a corresponding branch will be added here.
 
@@ -37,19 +38,19 @@ Follow the instructions below to switch your branch to worksheet-x (where x is a
 
 1. use `git` to checkout a branch:
 
-    ```shell
-    git checkout worksheet-x
-    ```
+   ```shell
+   git checkout worksheet-x
+   ```
 
-    and to view all available branches:
+   and to view all available branches:
 
-    ```shell
-    git branch -v
-    ```
+   ```shell
+   git branch -v
+   ```
 
 2. if you are using the GitHub Desktop client, follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
 
-## Run ##
+## Run
 
 Note that the repo will only contain the source code (not the compiled executable) contained within the `src` folder.
 You should thus build and execute the code using Cargo.
@@ -67,12 +68,24 @@ Now run the compiled package by running:
 cargo run
 ```
 
-## Worksheets ##
+Open the documentation for the package by running:
 
-- [Worksheet 0: Getting started with Rust](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and creation of a Hello World package.
+```shell
+cargo doc --open
+```
 
-- [Worksheet 1: Types, Variable & Input/Output](https://docs.google.com/document/d/1J5LmgJFnPYLjJBGiVSL7BezFMMhLZB2oqxctPSc2cHc/edit?usp=sharing) introduces you to variables and data types in Rust and ends with reading user's input from standard input.
+Test the entire package by running the following. But note that we have not included the text files used in some of the tests. You would need to create files as outlined by the comments in the `lib.rs`.
 
-## Further reading ##
+```shell
+cargo test
+```
 
-The textbook used to write the worksheets is [The Rust Programming Language textbook](https://doc.rust-lang.org/book/). 
+## Worksheets
+
+- [Worksheet 0: Getting started with Rust](https://docs.google.com/document/d/1-Whyq8QIRzTl00rSeeeO70deLPhB3_tEREvbEE2ALkE/edit?usp=sharing) guides you through the installation of Cargo and the creation of a Hello World package.
+
+- [Worksheet 1: Types, Variable & Input/Output](https://docs.google.com/document/d/1J5LmgJFnPYLjJBGiVSL7BezFMMhLZB2oqxctPSc2cHc/edit?usp=sharing) introduces you to variables and data types in Rust and ends with reading the user's input from standard input.
+
+## Further reading
+
+The textbook used to write the worksheets is [The Rust Programming Language textbook](https://doc.rust-lang.org/book/).
