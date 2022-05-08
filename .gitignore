@@ -20,3 +20,6 @@ debugging information
 # Added by cargo
 
 /target
+
+# Workbench settings
+.vscode/settings.json
