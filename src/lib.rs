@@ -218,7 +218,7 @@ DESCRIPTION:
   Concatenates FILE(s) to standard output.
   With no FILE returns an empty string.
 
-  -h, --help
+  --h, --help
       display this help and exit
   
 EXAMPLE:
