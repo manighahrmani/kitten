@@ -12,7 +12,6 @@ fn main() {
       options = args.options;
     }
     Err(error) => {
-      // TODO: Need to explain this
       eprintln!("Error while parsing your input: {}", error);
       process::exit(1);
     }
@@ -33,7 +32,6 @@ fn main() {
             // );
             let file_content: String =
               file_helper::file_content(filename).unwrap_or_else(|error| {
-                // TODO: Need to explain this
                 eprintln!("Error while reading file {}: {}", filename, error);
                 process::exit(1);
               });
