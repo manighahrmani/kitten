@@ -92,8 +92,6 @@ cargo test
 
 - [Worksheet 4: Testing & File handling basics](https://docs.google.com/document/d/1Ni4DrGqYZI3D0Xa5FdesZctYAuFeZ5GsYCRgpivPI4U/edit?usp=sharing) this worksheet introduces you to testing plus teaches you the basics of file handling with Test Driven Development.
 
-- [Worksheet 5: Advanced features & Crates.io](https://docs.google.com/document/d/1nDWDGMjBeNeTY-eiPQEpRegbFTXG5TouP1dFqmBwxMM/edit?usp=sharing) in the final worksheet, we will cover advanced features of the language and update kitten to get its input as arguments and options.
-
 ## Further reading
 
 The textbook used to write the worksheets is [The Rust Programming Language textbook](https://doc.rust-lang.org/book/).
