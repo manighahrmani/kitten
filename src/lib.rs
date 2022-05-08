@@ -206,3 +206,27 @@ Portraying Himmler's sacred realm of dream reality
     assert_eq!(content, file_helper::file_content(filename).unwrap());
   }
 }
+
+pub mod option_helper {
+  pub fn print_manual() -> String {
+    String::from(
+"NAME:
+  kitten - A mini version of the cat command
+
+SYNOPSIS:
+  kitten [OPTION]... [FILE]...
+
+DESCRIPTION:
+  Concatenates FILE(s) to standard output.
+  With no FILE returns an empty string.
+
+  -h, --help
+      display this help and exit
+  
+EXAMPLE:
+  kitten foo.txt bar.txt
+    Outputs the contents of foo.txt and then bar.txt.
+",
+    )
+  }
+}
