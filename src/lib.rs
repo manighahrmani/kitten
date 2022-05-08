@@ -226,6 +226,48 @@ EXAMPLE:
     Outputs the contents of foo.txt and then bar.txt.
 ";
 
+  /// Accepts the options taken from the command line
+  /// and returns an Option that is either Some(manual)
+  /// where manual is the help manual as a String
+  /// or None if help option is not set.
+  ///
+  /// # Arguments
+  ///
+  /// * `options` - The options taken as arguments from the command line
+  ///
+  /// # Examples
+  ///
+  /// ```
+  /// use kitten::option_helper::handle_options;
+  /// use arguments::Arguments;
+  ///
+  /// let arguments = std::env::args(); // kitten --help or kitten --h
+  /// let arguments = arguments::parse(arguments).unwrap();
+  ///
+  /// let mut options = arguments.options;
+  /// options.set("help", true);
+  ///
+  /// let output: String = handle_options(options).unwrap();
+  /// let expected_manual: &str = "NAME:
+  ///   kitten - A mini version of the cat command
+  ///
+  /// SYNOPSIS:
+  ///   kitten [OPTION]... [FILE]...
+  ///
+  /// DESCRIPTION:
+  ///   Concatenates FILE(s) to standard output.
+  ///   With no FILE returns an empty string.
+  ///
+  ///   --h, --help
+  ///       display this help and exit
+  ///  
+  /// EXAMPLE:
+  ///   kitten foo.txt bar.txt
+  ///     Outputs the contents of foo.txt and then bar.txt.
+  /// ";
+  ///
+  /// assert_eq!(String::from(expected_manual), output);
+  /// ```
   pub fn handle_options(options: arguments::Options) -> Option<String> {
     if options.has("help") || options.has("h") {
       Some(MANUAL.to_string())
