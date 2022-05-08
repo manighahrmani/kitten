@@ -208,9 +208,7 @@ Portraying Himmler's sacred realm of dream reality
 }
 
 pub mod option_helper {
-  pub fn print_manual() -> String {
-    String::from(
-"NAME:
+  pub const MANUAL: &str = "NAME:
   kitten - A mini version of the cat command
 
 SYNOPSIS:
@@ -226,7 +224,42 @@ DESCRIPTION:
 EXAMPLE:
   kitten foo.txt bar.txt
     Outputs the contents of foo.txt and then bar.txt.
-",
-    )
+";
+
+  pub fn handle_options(options: arguments::Options) -> Option<String> {
+    if options.has("help") || options.has("h") {
+      Some(MANUAL.to_string())
+    } else {
+      None
+    }
+  }
+}
+
+#[cfg(test)]
+mod option_helper_tests {
+  use super::option_helper;
+
+  #[test]
+  fn handle_options_help() {
+    let mut options_one: arguments::Options = arguments::Options::new();
+    options_one.set("help", true);
+    assert_eq!(
+      option_helper::handle_options(options_one),
+      Some(option_helper::MANUAL.to_string())
+    );
+
+    let mut options_two: arguments::Options = arguments::Options::new();
+    options_two.set("h", true);
+    assert_eq!(
+      option_helper::handle_options(options_two),
+      Some(option_helper::MANUAL.to_string())
+    );
+  }
+
+  #[test]
+  fn handle_options_other() {
+    let mut options: arguments::Options = arguments::Options::new();
+    options.set("other", true);
+    assert_eq!(option_helper::handle_options(options), None);
   }
 }
