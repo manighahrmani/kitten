@@ -39,4 +39,4 @@ Cargo.lock
 /target
 
 # Workbench settings
-.vscode/settings.json
+.vscode/**
