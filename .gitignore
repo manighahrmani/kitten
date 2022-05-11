@@ -17,8 +17,6 @@ debugging information
 *.pdb
 
 
-# Added to remove text files generated for testing
-/*.txt
+# Added by cargo
 
-# Workbench settings
-.vscode/settings.json
+/target

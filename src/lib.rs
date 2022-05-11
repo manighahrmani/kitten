@@ -206,3 +206,102 @@ Portraying Himmler's sacred realm of dream reality
     assert_eq!(content, file_helper::file_content(filename).unwrap());
   }
 }
+
+pub mod option_helper {
+  pub const MANUAL: &str = "NAME:
+  kitten - A mini version of the cat command
+
+SYNOPSIS:
+  kitten [OPTION]... [FILE]...
+
+DESCRIPTION:
+  Concatenates FILE(s) to standard output.
+  With no FILE returns an empty string.
+
+  --h, --help
+      display this help and exit
+  
+EXAMPLE:
+  kitten foo.txt bar.txt
+    Outputs the contents of foo.txt and then bar.txt.
+";
+
+  /// Accepts the options taken from the command line
+  /// and returns an Option that is either Some(manual)
+  /// where manual is the help manual as a String
+  /// or None if help option is not set.
+  ///
+  /// # Arguments
+  ///
+  /// * `options` - The options taken as arguments from the command line
+  ///
+  /// # Examples
+  ///
+  /// ```
+  /// use kitten::option_helper::handle_options;
+  /// use arguments::Arguments;
+  ///
+  /// let arguments = std::env::args(); // kitten --help or kitten --h
+  /// let arguments = arguments::parse(arguments).unwrap();
+  ///
+  /// let mut options = arguments.options;
+  /// options.set("help", true);
+  ///
+  /// let output: String = handle_options(options).unwrap();
+  /// let expected_manual: &str = "NAME:
+  ///   kitten - A mini version of the cat command
+  ///
+  /// SYNOPSIS:
+  ///   kitten [OPTION]... [FILE]...
+  ///
+  /// DESCRIPTION:
+  ///   Concatenates FILE(s) to standard output.
+  ///   With no FILE returns an empty string.
+  ///
+  ///   --h, --help
+  ///       display this help and exit
+  ///  
+  /// EXAMPLE:
+  ///   kitten foo.txt bar.txt
+  ///     Outputs the contents of foo.txt and then bar.txt.
+  /// ";
+  ///
+  /// assert_eq!(String::from(expected_manual), output);
+  /// ```
+  pub fn handle_options(options: arguments::Options) -> Option<String> {
+    if options.has("help") || options.has("h") {
+      Some(MANUAL.to_string())
+    } else {
+      None
+    }
+  }
+}
+
+#[cfg(test)]
+mod option_helper_tests {
+  use super::option_helper;
+
+  #[test]
+  fn handle_options_help() {
+    let mut options_one: arguments::Options = arguments::Options::new();
+    options_one.set("help", true);
+    assert_eq!(
+      option_helper::handle_options(options_one),
+      Some(option_helper::MANUAL.to_string())
+    );
+
+    let mut options_two: arguments::Options = arguments::Options::new();
+    options_two.set("h", true);
+    assert_eq!(
+      option_helper::handle_options(options_two),
+      Some(option_helper::MANUAL.to_string())
+    );
+  }
+
+  #[test]
+  fn handle_options_other() {
+    let mut options: arguments::Options = arguments::Options::new();
+    options.set("other", true);
+    assert_eq!(option_helper::handle_options(options), None);
+  }
+}
