@@ -20,3 +20,6 @@ debugging information
 # Added by cargo
 
 /target
+
+# hide vscode settings
+.vscode/settings.json
