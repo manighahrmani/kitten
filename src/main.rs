@@ -41,7 +41,7 @@ fn main() {
       string_helper::as_ordinal(number_of_file)
     );
 
-    input.clear();
+    input.clear(); // needed to empty input's content before a new input
     match io::stdin().read_line(&mut input) {
       Ok(_) => {
         input = string_helper::first_word(input);
@@ -51,7 +51,7 @@ fn main() {
       }
     }
 
-    match file_helper::file_content(&input){
+    match file_helper::file_content(&input) {
       Ok(file_content) => {
         output += &file_content;
       }
