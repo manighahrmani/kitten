@@ -19,3 +19,6 @@ debugging information
 
 # Added to remove text files generated for testing
 /*.txt
+
+# Workbench settings
+.vscode/settings.json
